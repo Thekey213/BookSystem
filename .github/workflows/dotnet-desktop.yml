@@ -16,7 +16,8 @@ jobs:
 
     env:
       Solution_Name: BookSystem.sln
-      Api_Project_Path: BookSystem/BookSystem.csproj  # Adjust this path if needed
+      Api_Project_Path: BookSystem/BookSystem.csproj  # Path to your API project
+      Test_Project_Path: BookSystem.Tests/BookSystem.Tests.csproj  # Path to your test project
 
     steps:
     - name: Checkout
@@ -28,13 +29,13 @@ jobs:
         dotnet-version: 8.0.x
 
     - name: Restore
-      run: dotnet restore $env:Api_Project_Path
+      run: dotnet restore $env:Solution_Name
 
     - name: Build
-      run: dotnet build $env:Api_Project_Path --configuration ${{ matrix.configuration }}
+      run: dotnet build $env:Solution_Name --configuration ${{ matrix.configuration }}
 
     - name: Execute unit tests
-      run: dotnet test $env:Api_Project_Path --configuration ${{ matrix.configuration }}
+      run: dotnet test $env:Test_Project_Path --configuration ${{ matrix.configuration }}
 
     - name: Publish
       run: dotnet publish $env:Api_Project_Path --configuration ${{ matrix.configuration }} --output ./publish
