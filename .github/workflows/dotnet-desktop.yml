@@ -1,0 +1,46 @@
+name: .NET Core API
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: windows-latest  # Windows runner
+
+    strategy:
+      matrix:
+        configuration: [Debug, Release]
+
+    env:
+      Solution_Name: BookSystem.sln
+      Api_Project_Path: BookSystem/BookSystem.csproj  # Adjust this path if needed
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Install .NET Core
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 8.0.x
+
+    - name: Restore
+      run: dotnet restore $env:Api_Project_Path
+
+    - name: Build
+      run: dotnet build $env:Api_Project_Path --configuration ${{ matrix.configuration }}
+
+    - name: Execute unit tests
+      run: dotnet test $env:Api_Project_Path --configuration ${{ matrix.configuration }}
+
+    - name: Publish
+      run: dotnet publish $env:Api_Project_Path --configuration ${{ matrix.configuration }} --output ./publish
+
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: API Build Artifacts
+        path: ./publish
