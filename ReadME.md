@@ -97,6 +97,4 @@ The `ApplicationDbContext` class connects Entity Framework Core to the database.
 - **GET** `/api/books` - Get all books.
 - **POST** `/api/books` - Add a new book.
 
-## Contributing
 
-Contributions are welcome! Fork the repository and submit a pull request with your changes.
