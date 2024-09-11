@@ -1,6 +1,3 @@
-Here is the revised `README.md` file for your **BookSystem** project:
-
-
 # BookSystem
 
 BookSystem is a web-based application for managing authors and books. It allows users to perform CRUD (Create, Read, Update, Delete) operations on books and authors using a clean, well-structured architecture.
