@@ -1,6 +1,3 @@
-Here is the revised `README.md` file for your **BookSystem** project:
-
-
 # BookSystem
 
 BookSystem is a web-based application for managing authors and books. It allows users to perform CRUD (Create, Read, Update, Delete) operations on books and authors using a clean, well-structured architecture.
@@ -65,7 +62,7 @@ The `ApplicationDbContext` class connects Entity Framework Core to the database.
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/your-repo/BookSystem.git
+   git clone https://github.com/Thekey213/BookSystem.git
    cd BookSystem
    ```
 
@@ -100,6 +97,4 @@ The `ApplicationDbContext` class connects Entity Framework Core to the database.
 - **GET** `/api/books` - Get all books.
 - **POST** `/api/books` - Add a new book.
 
-## Contributing
 
-Contributions are welcome! Fork the repository and submit a pull request with your changes.
